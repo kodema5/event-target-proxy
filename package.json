@@ -1,0 +1,6 @@
+{
+    "name": "event-target-proxy",
+    "description": "proxies event-target publish-subscribe as a hash-map",
+    "version": "0.0.1",
+    "main": "src/event-target-proxy.js"
+}
