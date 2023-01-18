@@ -61,8 +61,15 @@ export let EventTargetProxy = class {
             get(me, name) {
                 return me._lmap[name]
             },
-            deleteProperty(me, lname) {
-                me._remove(lname)
+            deleteProperty(me, regExp) {
+                let names
+                try {
+                    let re = new RegExp(regExp)
+                    names = Object.keys(me._lmap).filter((n) => re.test(n))
+                } catch(_) {
+                    names = [regExp]
+                }
+                names.forEach(n => me._remove(n))
                 return true
             },
             // for Object.getOwnPropertyNames
